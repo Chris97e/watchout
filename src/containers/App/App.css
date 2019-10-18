@@ -1,3 +1,8 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 .App {
   text-align: center;
 }
@@ -17,6 +22,14 @@
   color: white;
 }
 
+h1{
+  font-weight: bold;
+}
+
 .App-link {
   color: #09d3ac;
+}
+
+input{
+  color:white;
 }

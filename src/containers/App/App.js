@@ -1,44 +1,44 @@
 import React from 'react';
 import './App.css';
+import SearchArea from '../../components/SearchArea.js/SearchArea';
+import Nav from '../../components/Nav/Nav.js';
+import MovieList from '../../components/MovieList/MovieList';
+
 
 function App() {
-  
 
-  componentDidMount() {
-    fetch('https://api.themoviedb.org/3/search/movie?query=fish&api_key=2c73b0f220a02912d9c2cd39c09588e2&fbclid=IwAR0aMYke5NeHYK8WfoZZaS4WsyxnouJCa56NBWfs8yQMahcWx8pA5vLs9I0'')
-      .then(response => response.json())
-      .then(data => this.setState({ data }));
-  }
+  const apiKey = "b055e93a46f74183601af5f231d9e7ff";
+  const [movies, setMovies] = React.useState([]);
+  const [search, setSearch] = React.useState("");
 
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`)
+      .then(data => data.json())
+      .then(data => {
+        setMovies(data.results);
+
+      });
+
+  };
 
 
-
-  const handleMovie = () => {
-    var promise = fetch('https://api.themoviedb.org/3/search/movie?query=fish&api_key=2c73b0f220a02912d9c2cd39c09588e2&fbclid=IwAR0aMYke5NeHYK8WfoZZaS4WsyxnouJCa56NBWfs8yQMahcWx8pA5vLs9I0');
-    promise.then((info)=>{
-
-      return info.json();
-
-    }).then((info)=>{
-
-        console.log(info);
-
-    });
+  const handleChange = (e) => {
+    setSearch(e.target.value);
 
   }
-
-
-
 
   return (
     <div className="App">
       <header className="App-header">
 
-        <h1>Watchout</h1>
-        <p>Search the best of the best.</p>
+        <Nav></Nav>
+        <SearchArea handleSubmit={handleSubmit} handleChange={handleChange}></SearchArea>  
+        <MovieList movies={movies}></MovieList>
+          
         
-        
+
       </header>
     </div>
   );

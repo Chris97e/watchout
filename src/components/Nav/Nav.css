@@ -1,0 +1,26 @@
+.home{
+
+background-color: black;
+
+height: auto;
+display: flex;
+flex-flow: nowrap column;
+align-content: flex-start;
+
+
+}
+
+.home h1{
+    
+    padding: 0px;
+    margin: 0px;
+}
+
+.home p{
+
+    
+    padding: 0px;
+    margin: 0px;
+    margin-top: -20px;
+    font-weight: 200;
+}
